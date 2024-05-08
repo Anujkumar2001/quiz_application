@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { MyContext } from "../contextapi/authContextProvider";
 import { useContext } from "react";
+import ResponsivePagination from "react-responsive-pagination";
+import "react-responsive-pagination/themes/classic.css";
 
 const Quiz = () => {
   var allQuizArray = [
+    // JavaScript questions
     {
       id: 1,
       question: "What does 'DOM' stand for in JavaScript?",
@@ -136,21 +139,131 @@ const Quiz = () => {
         { option: "remove()" },
       ],
     },
+    // HTML questions
+    {
+      id: 11,
+      question: "What does HTML stand for?",
+      correctAns: "HyperText Markup Language",
+      userSelectedAns: "",
+      options: [
+        { option: "HyperText Markup Language" },
+        { option: "Highly Textual Markup Language" },
+        { option: "Home Tool Markup Language" },
+        { option: "Hyperlink and Text Markup Language" },
+      ],
+    },
+    {
+      id: 12,
+      question: "What is the correct HTML element for inserting a line break?",
+      correctAns: "<br>",
+      userSelectedAns: "",
+      options: [
+        { option: "<break>" },
+        { option: "<lb>" },
+        { option: "<br>" },
+        { option: "<linebreak>" },
+      ],
+    },
+    // Add more HTML questions here...
+
+    // CSS questions
+    {
+      id: 21,
+      question: "What does CSS stand for?",
+      correctAns: "Cascading Style Sheets",
+      userSelectedAns: "",
+      options: [
+        { option: "Cascading Style Sheets" },
+        { option: "Creative Style Sheets" },
+        { option: "Computer Style Sheets" },
+        { option: "Colorful Style Sheets" },
+      ],
+    },
+    {
+      id: 22,
+      question:
+        "Which CSS property is used to change the text color of an element?",
+      correctAns: "color",
+      userSelectedAns: "",
+      options: [
+        { option: "text-color" },
+        { option: "color" },
+        { option: "text-style" },
+        { option: "font-color" },
+      ],
+    },
+    // Add more CSS questions here...
+
+    // Additional JavaScript questions
+    {
+      id: 31,
+      question: "What is an IIFE in JavaScript?",
+      correctAns: "Immediately Invoked Function Expression",
+      userSelectedAns: "",
+      options: [
+        { option: "Internal Inline Function Execution" },
+        { option: "Immediate Invocation Function Execution" },
+        { option: "Inner Inline Function Execution" },
+        { option: "Immediately Invoked Function Expression" },
+      ],
+    },
+    {
+      id: 32,
+      question: "What is the purpose of the 'this' keyword in JavaScript?",
+      correctAns: "To refer to the current object",
+      userSelectedAns: "",
+      options: [
+        { option: "To declare a variable" },
+        { option: "To refer to the previous object" },
+        { option: "To refer to the next object" },
+        { option: "To refer to the current object" },
+      ],
+    },
+    // Add more JavaScript questions here...
+
+    // React questions
+    {
+      id: 41,
+      question: "What is JSX in React?",
+      correctAns: "JavaScript XML",
+      userSelectedAns: "",
+      options: [
+        { option: "JavaScript Extension" },
+        { option: "JavaScript XML" },
+        { option: "JavaScript and XML" },
+        { option: "JavaScript Syntax Extension" },
+      ],
+    },
+    {
+      id: 42,
+      question: "What function is used to change the state in React?",
+      correctAns: "setState()",
+      userSelectedAns: "",
+      options: [
+        { option: "changeState()" },
+        { option: "updateState()" },
+        { option: "modifyState()" },
+        { option: "setState()" },
+      ],
+    },
+    // Add more React questions here...
   ];
 
   const { setAuth } = useContext(MyContext);
 
   const navigate = useNavigate();
 
-
   // get time to localStorage----
   const lsTime = localStorage.getItem("time");
 
   const [time, setTime] = useState(lsTime);
   const [quizArray, setQuizArray] = useState(allQuizArray);
+  const [totalPages, setTotalPage] = useState(
+    Math.ceil(allQuizArray.length / 10)
+  );
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    localStorage.setItem("time", 120);
     setAuth(false);
 
     const timer = setInterval(() => {
@@ -175,81 +288,93 @@ const Quiz = () => {
 
   if (time == 0) {
     navigate("/result");
+    setAuth(true)
     localStorage.setItem("quizData", JSON.stringify(quizArray));
-    localStorage.setItem('time',120)
+    localStorage.setItem("time", 120);
   }
   return (
-    <div className="w-[80%] m-auto mt-10 relative my-10  top-[9vh] pb-9 pt-2">
-      <p className="flex border-2 border-black w-16 justify-center rounded-lg absolute top-[-35px] right-0">
+    <div className="w-[80%] m-auto mt-10 relative my-10  top-[9vh] pb-9 pt-4">
+      <p className="  flex border-2 border-black w-12  h-12  rounded-full items-center justify-center  absolute right-[-70px] top-[-30px]">
         {time > 60 ? Math.floor(time / 60) : "0"}:<p>{time % 60}</p>
       </p>
       {/* main quiz start from here---- */}
       <div className="flex flex-col gap-2 rounded-sm pb-10">
-        {quizArray.map((el, index) => {
-          return (
-            <div className=" bg-slate-200 p-5 ">
-              <h3 className="text-xl font-semibold mb-3">
-                {index + 1}. {el.question}
-              </h3>
-              <div className="flex flex-col gap-1">
-                <label htmlFor="" className="flex gap-2 items-center">
-                  <input
-                    type="radio"
-                    name={`option${index}`}
-                    onClick={() => {
-                      handleAns(el, el.options[0].option);
-                    }}
-                    style={{ width: "20px", height: "20px" }}
-                  />
-                  {el.options[0].option}
-                </label>
-                <label htmlFor="" className="flex gap-2 items-center">
-                  <input
-                    type="radio"
-                    name={`option${index}`}
-                    onClick={() => {
-                      handleAns(el, el.options[1].option);
-                    }}
-                    // disabled={el.userSelectedAns ? true : false}
-                    style={{ width: "20px", height: "20px" }}
-                  />
-                  {el.options[1].option}
-                </label>{" "}
-                <label htmlFor="" className="flex gap-2 items-center">
-                  <input
-                    type="radio"
-                    name={`option${index}`}
-                    onClick={() => {
-                      handleAns(el, el.options[2].option);
-                    }}
-                    // disabled={el.userSelectedAns ? true : false}
-                    style={{ width: "20px", height: "20px" }}
-                  />
-                  {el.options[2].option}
-                </label>{" "}
-                <label htmlFor="" className="flex gap-2 items-center">
-                  <input
-                    type="radio"
-                    name={`option${index}`}
-                    onClick={() => {
-                      handleAns(el, el.options[3].option);
-                    }}
-                    // disabled={el.userSelectedAns ? true : false}
-                    style={{ width: "20px", height: "20px" }}
-                  />
-                  {el.options[3].option}
-                </label>
+        {quizArray
+          .slice((currentPage - 1) * 10, currentPage * 10)
+          .map((el, index) => {
+            return (
+              <div className=" bg-slate-200 p-5 ">
+                <h3 className="text-xl font-semibold mb-3">
+                  {el.id}. {el.question}
+                </h3>
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="" className="flex gap-2 items-center">
+                    <input
+                      type="radio"
+                      name={`option${index}`}
+                      onClick={() => {
+                        handleAns(el, el.options[0].option);
+                      }}
+                      style={{ width: "20px", height: "20px" }}
+                    />
+                    {el.options[0].option}
+                  </label>
+                  <label htmlFor="" className="flex gap-2 items-center">
+                    <input
+                      type="radio"
+                      name={`option${index}`}
+                      onClick={() => {
+                        handleAns(el, el.options[1].option);
+                      }}
+                      // disabled={el.userSelectedAns ? true : false}
+                      style={{ width: "20px", height: "20px" }}
+                    />
+                    {el.options[1].option}
+                  </label>{" "}
+                  <label htmlFor="" className="flex gap-2 items-center">
+                    <input
+                      type="radio"
+                      name={`option${index}`}
+                      onClick={() => {
+                        handleAns(el, el.options[2].option);
+                      }}
+                      // disabled={el.userSelectedAns ? true : false}
+                      style={{ width: "20px", height: "20px" }}
+                    />
+                    {el.options[2].option}
+                  </label>{" "}
+                  <label htmlFor="" className="flex gap-2 items-center">
+                    <input
+                      type="radio"
+                      name={`option${index}`}
+                      onClick={() => {
+                        handleAns(el, el.options[3].option);
+                      }}
+                      // disabled={el.userSelectedAns ? true : false}
+                      style={{ width: "20px", height: "20px" }}
+                    />
+                    {el.options[3].option}
+                  </label>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        {/* pazination ----- */}
+        <div>
+          <ResponsivePagination
+            current={currentPage}
+            total={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
       </div>
       <button
         className="bg-green-800 py-2 px-5 text-white rounded-sm"
         onClick={() => {
           navigate("/result");
           localStorage.setItem("quizData", JSON.stringify(quizArray));
-          setAuth(true);localStorage.setItem('time',120)
+          setAuth(true);
+          localStorage.setItem("time", 120);
         }}
       >
         Submit

@@ -22,6 +22,7 @@ const Result = () => {
       <h1 className="text-2xl font-bold border-b-2 border-black">
         Your Report Card
       </h1>
+      <div className="h-[80vh] overflow-scroll  border-2 border-black p-3 scroll-smooth">
       <table>
         <thead>
           <tr className="border-2 border-black font-bold">
@@ -46,6 +47,7 @@ const Result = () => {
           ))}
         </tbody>
       </table>
+      </div>
       <div className="mb-10 bg-black w-full py-3 text-white text-xl px-2">
         <div className="flex gap-3">
           <h2>your score</h2>

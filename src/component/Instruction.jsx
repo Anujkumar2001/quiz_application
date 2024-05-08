@@ -25,6 +25,7 @@ const Instruction = () => {
     }, 1000);
     setStart(true);
     setAuth(true)
+    localStorage.setItem('time',120)
   };
 
   if (startTime === 0) {

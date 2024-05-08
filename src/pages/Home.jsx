@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import img from "../asset/manpng.png";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { MyContext } from "../contextapi/authContextProvider";
 
 const Home = () => {
+  const {auth}=useContext(MyContext)
+
+  useEffect(()=>{
+    if(!auth){
+      navigate("/quiz")
+    }
+  },[])
   const navigate = useNavigate();
   return (
     <div className="relative bg-cover w-[100%] m-auto h-[91vh] overflow-hidden top-[9vh]">
