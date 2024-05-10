@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 const Result = () => {
   const navigate = useNavigate();
-  const getData = JSON.parse(localStorage.getItem("quizData"));
+  const getData = JSON.parse(sessionStorage.getItem("quizData"));
 
   const [totalScore, setTotalScore] = useState(0);
   const [userQuizData, setUserQuizData] = useState(getData);
+  const [totalQuestion,setTotalQuestion]=useState(0)
 
   useEffect(() => {
     // Assuming getData and totalScore are properly initialized and available here
@@ -15,6 +16,8 @@ const Result = () => {
         setTotalScore((prevTotalScore) => prevTotalScore + 1); // Update totalScore
         console.log("correct answer");
       }
+      setTotalQuestion(getData.length)
+    
     });
   }, []);
   return (
@@ -55,10 +58,10 @@ const Result = () => {
         </div>
         <div className="font-thin text-xl">
           <h3 className="font-thin text-[15px]">
-            You Got {(totalScore * 100) / 10}% Marks{" "}
+            You Got {(totalScore * 100) / totalQuestion}% Marks{" "}
             <span
               className={`${
-                (totalScore * 100) / 10 > 50 ? "text-green-400" : "text-red-600"
+                (totalScore * 100) / totalQuestion > 50 ? "text-green-400" : "text-red-600"
               }`}
             >
               {totalScore > 5
@@ -77,7 +80,7 @@ const Result = () => {
         </button>
         <button
           onClick={() => {
-            localStorage.removeItem("quizData");
+            sessionStorage.removeItem("quizData");
             navigate("/");
           }}
           className="bg-red-700 text-white py-3 px-4 rounded-lg mb-10"
