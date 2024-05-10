@@ -44,7 +44,7 @@ const Result = () => {
                     {el.userSelectedAns !== el.correctAns ? (
                       "X"
                     ) : (
-                      <MdOutlineDone className="text-center text-2xl text-green-700 font-extrabold" />
+                      <MdOutlineDone className="text-center text-xl text-green-700 font-extrabold" />
                     )}
                   </th>
                   <th>{el.userSelectedAns}</th>
@@ -62,7 +62,7 @@ const Result = () => {
         </div>
         <div className="font-thin text-xl">
           <h3 className="font-thin text-[15px]">
-            You Got {(totalScore * 100) / totalQuestion}% Marks{" "}
+            You Got {Number(Number.parseFloat((totalScore * 100) / totalQuestion).toFixed(2))}% Marks
             <span
               className={`${
                 (totalScore * 100) / totalQuestion > 50
