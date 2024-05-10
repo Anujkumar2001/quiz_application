@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineDone } from "react-icons/md";
 
 const Result = () => {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ const Result = () => {
 
   const [totalScore, setTotalScore] = useState(0);
   const [userQuizData, setUserQuizData] = useState(getData);
-  const [totalQuestion,setTotalQuestion]=useState(0)
+  const [totalQuestion, setTotalQuestion] = useState(0);
 
   useEffect(() => {
     // Assuming getData and totalScore are properly initialized and available here
@@ -16,8 +17,7 @@ const Result = () => {
         setTotalScore((prevTotalScore) => prevTotalScore + 1); // Update totalScore
         console.log("correct answer");
       }
-      setTotalQuestion(getData.length)
-    
+      setTotalQuestion(getData.length);
     });
   }, []);
   return (
@@ -25,31 +25,35 @@ const Result = () => {
       <h1 className="text-2xl font-bold border-b-2 border-black">
         Your Report Card
       </h1>
-      <div className="h-[80vh] overflow-scroll  border-2 border-black p-3 scroll-smooth">
-      <table>
-        <thead>
-          <tr className="border-2 border-black font-bold">
-            <th>Qestion NO.</th>
-            <th>Wrong Ans</th>
-            <th>Your Answer</th>
-            <th>Correct Ans</th>
-          </tr>
-        </thead>
-        <tbody>
-          {getData.map((el, i) => (
-            <>
-              <tr className="border-black border-2 p-5 font-thin">
-                <th className="p-4">{i + 1}</th>
-                <th className="text-red-700">
-                  {el.userSelectedAns !== el.correctAns ? "X" : ""}
-                </th>
-                <th>{el.userSelectedAns}</th>
-                <th>{el.correctAns}</th>
-              </tr>
-            </>
-          ))}
-        </tbody>
-      </table>
+      <div className="border-2 border-black p-3">
+        <table>
+          <thead>
+            <tr className="border-2 border-black font-bold">
+              <th>Qestion NO.</th>
+              <th> Ans</th>
+              <th>Your Answer</th>
+              <th>Correct Ans</th>
+            </tr>
+          </thead>
+          <tbody>
+            {getData.map((el, i) => (
+              <>
+                <tr className="border-black border-2 p-5 font-thin">
+                  <th className="p-4">{i + 1}</th>
+                  <th className="text-red-700 text-center text-xl ">
+                    {el.userSelectedAns !== el.correctAns ? (
+                      "X"
+                    ) : (
+                      <MdOutlineDone className="text-center text-2xl text-green-700 font-extrabold" />
+                    )}
+                  </th>
+                  <th>{el.userSelectedAns}</th>
+                  <th>{el.correctAns}</th>
+                </tr>
+              </>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div className="mb-10 bg-black w-full py-3 text-white text-xl px-2">
         <div className="flex gap-3">
@@ -61,7 +65,9 @@ const Result = () => {
             You Got {(totalScore * 100) / totalQuestion}% Marks{" "}
             <span
               className={`${
-                (totalScore * 100) / totalQuestion > 50 ? "text-green-400" : "text-red-600"
+                (totalScore * 100) / totalQuestion > 50
+                  ? "text-green-400"
+                  : "text-red-600"
               }`}
             >
               {totalScore > 5
