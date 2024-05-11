@@ -8,11 +8,11 @@ import "react-responsive-pagination/themes/classic.css";
 
 const Quiz = () => {
   var allQuizArray = [
-    // JavaScript questions
+    // 8th Grade Math questions
     {
       id: 1,
-      question: "What does 'DOM' stand for in JavaScript?",
-      correctAns: "Document Object Model",
+      question: "What is the value of π (pi)?",
+      correctAns: "3.14159",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -21,17 +21,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "Data Object Model" },
-        { option: "Document Object Model" },
-        { option: "Dynamic Object Model" },
-        { option: "Digital Object Model" },
+        { option: "3.142" },
+        { option: "2.718" },
+        { option: "3.14159" },
+        { option: "3.14" },
       ],
     },
     {
       id: 2,
-      question: "What is a closure in JavaScript?",
-      correctAns:
-        "A function that has access to its outer function's scope even after the outer function has finished executing",
+      question: "What is the square root of 64?",
+      correctAns: "8",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -40,19 +39,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "A function declared within another function" },
-        { option: "A function that takes another function as an argument" },
-        { option: "A function that returns a function" },
-        {
-          option:
-            "A function that has access to its outer function's scope even after the outer function has finished executing",
-        },
+        { option: "6" },
+        { option: "7" },
+        { option: "8" },
+        { option: "9" },
       ],
     },
     {
       id: 3,
-      question: "What does 'NaN' stand for?",
-      correctAns: "Not a Number",
+      question: "If a triangle has angles measuring 45°, 45°, and 90°, what type of triangle is it?",
+      correctAns: "Right triangle",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -61,17 +57,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "No Answer Needed" },
-        { option: "Not a Number" },
-        { option: "Not a Node" },
-        { option: "New and Number" },
+        { option: "Equilateral triangle" },
+        { option: "Isosceles triangle" },
+        { option: "Scalene triangle" },
+        { option: "Right triangle" },
       ],
     },
     {
       id: 4,
-      question: "What is the purpose of 'use strict' in JavaScript?",
-      correctAns:
-        "To enforce stricter parsing and error handling in JavaScript",
+      question: "What is the formula for the area of a rectangle?",
+      correctAns: "Length × Width",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -80,19 +75,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "To use external JavaScript libraries" },
-        { option: "To prevent browsers from running JavaScript" },
-        {
-          option:
-            "To enforce stricter parsing and error handling in JavaScript",
-        },
-        { option: "To enable asynchronous JavaScript execution" },
+        { option: "Length + Width" },
+        { option: "2 × (Length + Width)" },
+        { option: "Length × Width" },
+        { option: "Length ÷ Width" },
       ],
     },
     {
       id: 5,
-      question: "What is the result of the expression 5 + '5' in JavaScript?",
-      correctAns: "55",
+      question: "If x = 5 and y = 3, what is the value of 2x + 3y?",
+      correctAns: "19",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -101,16 +93,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "'10'" },
-        { option: "10" },
-        { option: "55" },
-        { option: "Error" },
+        { option: "16" },
+        { option: "17" },
+        { option: "18" },
+        { option: "19" },
       ],
     },
     {
       id: 6,
-      question: "What does 'AJAX' stand for?",
-      correctAns: "Asynchronous JavaScript and XML",
+      question: "What is the formula for the circumference of a circle?",
+      correctAns: "2πr",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -119,16 +111,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "Advanced JavaScript and XML" },
-        { option: "Asynchronous JavaScript and XML" },
-        { option: "All JavaScript and XML" },
-        { option: "Automatic JavaScript and XML" },
+        { option: "πr^2" },
+        { option: "2πr" },
+        { option: "πd" },
+        { option: "πr" },
       ],
     },
     {
       id: 7,
-      question: "Which keyword is used to declare variables in JavaScript?",
-      correctAns: "var",
+      question: "What is the value of 5! (factorial)?",
+      correctAns: "120",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -137,16 +129,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "int" },
-        { option: "var" },
-        { option: "string" },
-        { option: "let" },
+        { option: "20" },
+        { option: "100" },
+        { option: "110" },
+        { option: "120" },
       ],
     },
     {
       id: 8,
-      question: "What is the purpose of 'typeof' operator in JavaScript?",
-      correctAns: "To determine the type of a variable or expression",
+      question: "If a square has a side length of 6 cm, what is its perimeter?",
+      correctAns: "24 cm",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -155,17 +147,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "To define a new variable" },
-        { option: "To perform mathematical operations" },
-        { option: "To determine the type of a variable or expression" },
-        { option: "To declare a function" },
+        { option: "12 cm" },
+        { option: "18 cm" },
+        { option: "24 cm" },
+        { option: "36 cm" },
       ],
     },
     {
       id: 9,
-      question:
-        "What is the output of the following code snippet: console.log(2 + '2' - 1); ?",
-      correctAns: "21",
+      question: "What is the next number in the sequence: 2, 4, 8, 16, ...?",
+      correctAns: "32",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -174,17 +165,16 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "21" },
-        { option: "3" },
-        { option: "20" },
-        { option: "22" },
+        { option: "24" },
+        { option: "28" },
+        { option: "30" },
+        { option: "32" },
       ],
     },
     {
       id: 10,
-      question:
-        "Which built-in method removes the last element from an array and returns that element?",
-      correctAns: "pop()",
+      question: "What is the value of 2^4 (2 raised to the power of 4)?",
+      correctAns: "16",
       userSelectedAns: "",
       userSelectedAnsObj: {
         0: "",
@@ -193,163 +183,15 @@ const Quiz = () => {
         3: ""
       },
       options: [
-        { option: "shift()" },
-        { option: "pop()" },
-        { option: "delete()" },
-        { option: "remove()" },
+        { option: "8" },
+        { option: "12" },
+        { option: "14" },
+        { option: "16" },
       ],
-    },
-    // HTML questions
-    {
-      id: 11,
-      question: "What does HTML stand for?",
-      correctAns: "HyperText Markup Language",
-      userSelectedAns: "",
-      userSelectedAnsObj: {
-        0: "",
-        1: "",
-        2: "",
-        3: ""
-      },
-      options: [
-        { option: "HyperText Markup Language" },
-        { option: "Highly Textual Markup Language" },
-        { option: "Home Tool Markup Language" },
-        { option: "Hyperlink and Text Markup Language" },
-      ],
-    },
-    {
-      id: 12,
-      question: "What is the correct HTML element for inserting a line break?",
-      correctAns: "<br>",
-      userSelectedAns: "",
-      userSelectedAnsObj: {
-        0: "",
-        1: "",
-        2: "",
-        3: ""
-      },
-      options: [
-        { option: "<break>" },
-        { option: "<lb>" },
-        { option: "<br>" },
-        { option: "<linebreak>" },
-      ],
-    },
-    // CSS questions
-    {
-      id: 21,
-      question: "What does CSS stand for?",
-      correctAns: "Cascading Style Sheets",
-      userSelectedAns: "",
-      userSelectedAnsObj: {
-        0: "",
-        1: "",
-        2: "",
-        3: ""
-      },
-      options: [
-        { option: "Cascading Style Sheets" },
-        { option: "Creative Style Sheets" },
-        { option: "Computer Style Sheets" },
-        { option: "Colorful Style Sheets" },
-      ],
-    },
-    {
-      id: 22,
-      question:
-        "Which CSS property is used to change the text color of an element?",
-      correctAns: "color",
-      userSelectedAns: "",
-      userSelectedAnsObj: {
-        0: "",
-        1: "",
-        2: "",
-        3: ""
-      },
-      options: [
-        { option: "text-color" },
-        { option: "color" },
-        { option: "text-style" },
-        { option: "font-color" },
-      ],
-    },
-    // Additional JavaScript questions
-    {
-      id: 31,
-      question: "What is an IIFE in JavaScript?",
-      correctAns: "Immediately Invoked Function Expression",
-      userSelectedAns: "",
-      userSelectedAnsObj: {
-        0: "",
-        1: "",
-        2: "",
-        3: ""
-      },
-      options: [
-        { option: "Internal Inline Function Execution" },
-        { option: "Immediate Invocation Function Execution" },
-        { option: "Inner Inline Function Execution" },
-        { option: "Immediately Invoked Function Expression" },
-      ],
-    },
-    {
-      id: 32,
-      question: "What is the purpose of the 'this' keyword in JavaScript?",
-      correctAns: "To refer to the current object",
-      userSelectedAns: "",
-      userSelectedAnsObj: {
-        0: "",
-        1: "",
-        2: "",
-        3: ""
-      },
-      options: [
-        { option: "To declare a variable" },
-        { option: "To refer to the previous object" },
-        { option: "To refer to the next object" },
-        { option: "To refer to the current object" },
-      ],
-    },
-    // React questions
-    {
-      id: 41,
-      question: "What is JSX in React?",
-      correctAns: "JavaScript XML",
-      userSelectedAns: "",
-      userSelectedAnsObj: {
-        0: "",
-        1: "",
-        2: "",
-        3: ""
-      },
-      options: [
-        { option: "JavaScript Extension" },
-        { option: "JavaScript XML" },
-        { option: "JavaScript and XML" },
-        { option: "JavaScript Syntax Extension" },
-      ],
-    },
-    {
-      id: 42,
-      question: "What function is used to change the state in React?",
-      correctAns: "setState()",
-      userSelectedAns: "",
-      userSelectedAnsObj: {
-        0: "",
-        1: "",
-        2: "",
-        3: ""
-      },
-      options: [
-        { option: "changeState()" },
-        { option: "updateState()" },
-        { option: "modifyState()" },
-        { option: "setState()" },
-      ],
-    },
-    // Add more React questions here...
+    }
 ];
+
+
 
 
   const { setAuth } = useContext(MyContext);
