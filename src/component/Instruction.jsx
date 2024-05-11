@@ -25,7 +25,7 @@ const Instruction = () => {
     }, 1000);
     setStart(true);
     setAuth(true)
-    sessionStorage.setItem('time',120)
+    sessionStorage.setItem('time',180)
   };
 
   if (startTime === 0) {
