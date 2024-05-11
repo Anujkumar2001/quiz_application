@@ -24,7 +24,7 @@ const Home = () => {
       >
         <div className="absolute inset-0 bg-black opacity-70"></div>
         <div className="z-20 md:ml-28 m-10 min-w-[200px] max-w-[600px]">
-          <h1 className="text-5xl font-bold text-white z-20 ">
+          <h1 className="text-3xl md:text-5xl font-bold text-white z-20 ">
             Crack the exam <br /> and{" "}
             <span className="text-yellow-400">secure</span> a job
           </h1>

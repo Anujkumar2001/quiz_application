@@ -9,6 +9,7 @@ const Result = () => {
   const [totalScore, setTotalScore] = useState(0);
   const [userQuizData, setUserQuizData] = useState(getData);
   const [totalQuestion, setTotalQuestion] = useState(0);
+  const [username,setUserName]=useState("")
 
   useEffect(() => {
     // Assuming getData and totalScore are properly initialized and available here
@@ -18,6 +19,7 @@ const Result = () => {
         console.log("correct answer");
       }
       setTotalQuestion(getData.length);
+      setUserName(sessionStorage.getItem('username'))
     });
   }, []);
   return (
@@ -25,8 +27,11 @@ const Result = () => {
       <h1 className="text-2xl font-bold border-b-2 border-black">
         Your Report Card
       </h1>
-      <div className="border-2 border-black p-3">
-        <table>
+     <div className="flex w-[60%]">
+     <h2 className="text-xl  font-semibold border-b-2 border-black w-full">Name: <span className="font-normal ">{username}</span></h2>
+     </div>
+      <div className="border-2 border-black p-3 w-[60%]">
+        <table className="w-full">
           <thead>
             <tr className="border-2 border-black font-bold">
               <th>Qestion NO.</th>
@@ -88,6 +93,7 @@ const Result = () => {
           onClick={() => {
             sessionStorage.removeItem("quizData");
             navigate("/");
+            sessionStorage.removeItem('username')
           }}
           className="bg-red-700 text-white py-3 px-4 rounded-lg mb-10"
         >

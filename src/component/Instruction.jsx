@@ -8,6 +8,7 @@ import { useContext } from "react";
 const Instruction = () => {
   const [startTime, setStartTime] = useState(5);
   const [start, setStart] = useState(false);
+  const [username,setUserName]=useState("")
 
   const {auth,setAuth}=useContext(MyContext)
 
@@ -17,6 +18,14 @@ const Instruction = () => {
     if(!auth){
       navigate("/quiz")
     }
+    let usernameValue
+    do {
+      // Prompt the user to enter a value
+      usernameValue = prompt("Please enter a value:");
+  } while (!usernameValue); 
+  //  const usernameValue= prompt("Enter Your Name")
+   setUserName(usernameValue)
+  sessionStorage.setItem('username',usernameValue )
   },[])
 
   const handleStartButton = () => {
@@ -44,6 +53,7 @@ const Instruction = () => {
     size,
     strokeWidth,
   } = useCountdown({ isPlaying: true, duration: 7, colors: "#abc" });
+
 
   return (
     <div className="w-[80%] m-auto mt-10 flex flex-col justify-center items-center pt-[9vh]">
